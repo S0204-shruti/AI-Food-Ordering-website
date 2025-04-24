@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About Us - Sardaarji's Kitchen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* --- Root Variables (from main theme) --- */
+    :root {
+        --primary-color: #FF7E1F; /* Orange */
+        --primary-dark: #E06000;
+        --secondary-color: #4CAF50; /* Green (Used less here) */
+        --accent-color: #FFC107; /* Yellow (Used less here) */
+        --dark-color: #333333;
+        --darker-bg: #222222; /* Footer background */
+        --light-color: #F8F9FA;
+        --text-color: #212529;
+        --background-light: #f9f7f4; /* Light beige background */
+        --white: #ffffff;
+        --grey-light: #eee;
+        --grey-medium: #999;
+        --grey-dark: #666;
+        --border-radius: 15px;
+        --shadow-light: 0 6px 15px rgba(0,0,0,0.08);
+        --shadow-medium: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    /* --- Base Styles --- */
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: var(--background-light);
+        color: var(--text-color);
+        line-height: 1.6;
+    }
+
+    h1, h2, h3, h4 {
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+        color: var(--dark-color);
+    }
+
+    a {
+        color: var(--primary-color);
+        text-decoration: none;
+    }
+    a:hover {
+        color: var(--primary-dark);
+    }
+
+    /* --- Page Header --- */
+    .page-header {
+        background: linear-gradient(135deg, var(--primary-color), var(--primary-dark)); /* Using theme colors */
+        color: var(--white);
+        padding: 4rem 1rem; /* Increased padding */
+        text-align: center;
+        margin-bottom: 2rem; /* Space below header */
+        border-bottom: 5px solid var(--primary-dark);
+    }
+
+    .page-header h1 {
+        font-weight: 700;
+        font-size: 3rem; /* Larger heading */
+        color: var(--white); /* Explicitly white */
+        margin-bottom: 0.5rem;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+
+    .page-header p.lead {
+        font-weight: 300;
+        font-size: 1.2rem;
+        opacity: 0.9;
+    }
+
+    /* --- Content Block Styling --- */
+    .content-block {
+        background: var(--white);
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-medium);
+        padding: 2.5rem 2rem; /* Original padding */
+        margin: 2rem auto; /* Centering */
+        max-width: 800px; /* Limiting width */
+        border-top: 5px solid var(--primary-color); /* Accent border */
+    }
+
+    .content-block h2 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid var(--grey-light);
+        color: var(--dark-color);
+    }
+
+    .content-block p, .content-block ul {
+        color: var(--grey-dark); /* Softer text color */
+        margin-bottom: 1.5rem;
+        font-size: 1rem;
+    }
+
+    .content-block ul {
+        list-style: none; /* Remove default bullets */
+        padding-left: 0;
+    }
+
+    .content-block ul li {
+        position: relative;
+        padding-left: 1.8rem; /* Space for custom icon */
+        margin-bottom: 0.8rem;
+    }
+
+    .content-block ul li::before {
+        content: '\f005'; /* Font Awesome Star icon */
+        font-family: 'Font Awesome 6 Free';
+        font-weight: 900; /* Solid style */
+        color: var(--accent-color); /* Yellow accent */
+        position: absolute;
+        left: 0;
+        top: 2px; /* Adjust vertical alignment */
+        font-size: 1rem;
+    }
+
+    /* --- Button Styling --- */
+    .btn-main {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+        color: var(--white);
+        padding: 0.8rem 2rem;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 8px rgba(255, 126, 31, 0.3);
+        border: none; /* Ensure no default border */
+        display: inline-flex; /* Align icon and text */
+        align-items: center;
+        gap: 0.5rem; /* Space between icon and text */
+    }
+
+    .btn-main:hover {
+        background-color: var(--primary-dark);
+        border-color: var(--primary-dark);
+        color: var(--white); /* Ensure text stays white */
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(255, 126, 31, 0.4);
+    }
+
+    /* --- Footer Styling --- */
+    footer {
+        background-color: var(--darker-bg); /* Consistent dark footer */
+        color: rgba(255, 255, 255, 0.7); /* Softer white text */
+        text-align: center;
+        padding: 2rem 1rem; /* Consistent padding */
+        margin-top: 4rem; /* More space before footer */
+        font-size: 0.9rem;
+    }
+
+     /* --- Responsive --- */
+     @media (max-width: 768px) {
+         .page-header h1 {
+             font-size: 2.5rem;
+         }
+         .content-block {
+             padding: 2rem 1.5rem;
+             margin: 1.5rem auto;
+         }
+     }
+     @media (max-width: 576px) {
+         .page-header {
+             padding: 3rem 1rem;
+         }
+         .page-header h1 {
+             font-size: 2rem;
+         }
+          .page-header p.lead {
+             font-size: 1rem;
+         }
+         .content-block {
+             padding: 1.5rem 1rem;
+             margin: 1rem auto;
+         }
+         .content-block h2 {
+             font-size: 1.6rem;
+         }
+         .content-block p, .content-block ul {
+             font-size: 0.95rem;
+         }
+     }
+
+  </style>
+</head>
+<body>
+
+  <!-- Header Section -->
+  <div class="page-header">
+    <h1>About Us</h1>
+    <p class="lead">Discover the story and values behind Sardaarji's Kitchen</p>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="content-block">
+      <h2>Our Journey</h2>
+      <p>Sardaarji's Kitchen was founded in 1995 with a passion for bringing authentic Punjabi flavors to your table. Inspired by the warmth of Punjabi hospitality and the richness of Indian cuisine, we have grown from a humble kitchen to a beloved food destination, known for our commitment to quality and tradition.</p>
+
+      <h2>Our Values</h2>
+      <ul>
+        <li>Using only the freshest, high-quality ingredients sourced locally whenever possible.</li>
+        <li>Honoring traditional recipes while embracing innovative culinary twists.</li>
+        <li>Maintaining the highest standards of hygiene and promoting sustainability.</li>
+        <li>Focusing on customer delight and ensuring a welcoming experience for all.</li>
+      </ul>
+
+      <h2>Why Choose Us?</h2>
+      <p>We believe food is a celebration of life, culture, and togetherness. From our signature Sarso ka Saag and hearty Dal Makhani to our tandoori delights and sweet temptations like Gulab Jamun, every dish is crafted with love, care, and authentic spices. Our dedicated team is committed to delivering not just delicious meals, but truly memorable dining experiences, whether you dine in or order online.</p>
+
+      <!-- Back Button -->
+      <div class="text-center mt-5"> <!-- Increased top margin -->
+        <a href="index.html" class="btn btn-main">
+          <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <footer>
+    <div>Sardaarji's Kitchen &copy; 2025. All Rights Reserved.</div>
+  </footer>
+
+  <!-- Bootstrap JS and Popper.js (Keep for potential future components) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- No custom JS needed for this static page -->
+
+</body>
+</html>

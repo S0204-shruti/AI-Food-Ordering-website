@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Terms & Conditions - Sardaarji's Kitchen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome (for list icons and Back button) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* --- Root Variables (from main theme) --- */
+    :root {
+        --primary-color: #FF7E1F; /* Orange */
+        --primary-dark: #E06000;
+        --secondary-color: #4CAF50; /* Green */
+        --accent-color: #FFC107; /* Yellow */
+        --dark-color: #333333;
+        --darker-bg: #222222; /* Footer background */
+        --light-color: #F8F9FA;
+        --text-color: #212529;
+        --background-light: #f9f7f4; /* Light beige background */
+        --white: #ffffff;
+        --grey-light: #eee;
+        --grey-medium: #999;
+        --grey-dark: #666;
+        --border-color-light: #dee2e6;
+        --border-radius: 15px;
+        --border-radius-sm: 8px;
+        --shadow-light: 0 6px 15px rgba(0,0,0,0.08);
+        --shadow-medium: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    /* --- Base Styles --- */
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: var(--background-light);
+        color: var(--text-color);
+        line-height: 1.7; /* Increased line height for legal text */
+    }
+
+    h1, h2, h3, h4 {
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+        color: var(--dark-color);
+    }
+
+    a {
+        color: var(--primary-color);
+        text-decoration: none;
+    }
+    a:hover {
+        color: var(--primary-dark);
+    }
+
+    /* --- Page Header --- */
+    .page-header {
+        background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+        color: var(--white);
+        padding: 4rem 1rem;
+        text-align: center;
+        margin-bottom: 2rem;
+        border-bottom: 5px solid var(--primary-dark);
+    }
+
+    .page-header h1 {
+        font-weight: 700;
+        font-size: 3rem;
+        color: var(--white);
+        margin-bottom: 0.5rem;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+
+    .page-header p.lead {
+        font-weight: 300;
+        font-size: 1.2rem;
+        opacity: 0.9;
+    }
+
+    /* --- Content Block Styling --- */
+    .content-block {
+        background: var(--white);
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-medium);
+        padding: 2.5rem 2.5rem; /* Slightly more padding */
+        margin: 2rem auto;
+        max-width: 850px; /* Consistent width */
+        border-top: 5px solid var(--primary-color);
+    }
+
+    .content-block h2 {
+        font-size: 1.8rem;
+        margin-top: 1.8rem; /* Space above headings */
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid var(--grey-light);
+        color: var(--dark-color);
+    }
+     /* Space for first heading */
+    .content-block h2:first-of-type {
+        margin-top: 0;
+    }
+
+
+    .content-block p {
+        color: var(--grey-dark);
+        margin-bottom: 1.2rem;
+        font-size: 0.95rem;
+    }
+
+    .content-block ul {
+        color: var(--grey-dark);
+        margin-bottom: 1.5rem; /* Space after lists */
+        padding-left: 0; /* Remove default padding */
+        list-style: none; /* Remove default bullets */
+        font-size: 0.95rem;
+    }
+
+    .content-block ul li {
+        position: relative;
+        padding-left: 2rem; /* Space for icon */
+        margin-bottom: 0.9rem; /* Space between list items */
+    }
+
+    .content-block ul li::before {
+        /* Use a relevant Font Awesome icon */
+        content: '\f058'; /* Check Circle solid icon */
+        font-family: 'Font Awesome 6 Free';
+        font-weight: 900; /* Solid style */
+        color: var(--primary-color); /* Use primary color for T&C points */
+        position: absolute;
+        left: 0;
+        top: 4px; /* Adjust vertical alignment */
+        font-size: 1.1rem; /* Slightly larger icon */
+    }
+
+    /* --- Button Styling --- */
+    .btn-main {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+        color: var(--white);
+        padding: 0.8rem 2rem;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 8px rgba(255, 126, 31, 0.3);
+        border: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .btn-main:hover {
+        background-color: var(--primary-dark);
+        border-color: var(--primary-dark);
+        color: var(--white);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(255, 126, 31, 0.4);
+    }
+
+    /* --- Footer Styling --- */
+    footer {
+        background-color: var(--darker-bg);
+        color: rgba(255, 255, 255, 0.7);
+        text-align: center;
+        padding: 2rem 1rem;
+        margin-top: 4rem;
+        font-size: 0.9rem;
+    }
+
+     /* --- Responsive --- */
+     @media (max-width: 768px) {
+         .page-header h1 {
+             font-size: 2.5rem;
+         }
+         .content-block {
+             padding: 2rem 1.5rem;
+             margin: 1.5rem auto;
+         }
+         .content-block h2 {
+             font-size: 1.6rem;
+         }
+     }
+     @media (max-width: 576px) {
+         .page-header {
+             padding: 3rem 1rem;
+         }
+         .page-header h1 {
+             font-size: 2rem;
+         }
+          .page-header p.lead {
+             font-size: 1rem;
+         }
+         .content-block {
+             padding: 1.5rem 1rem;
+             margin: 1rem auto;
+         }
+         .content-block h2 {
+             font-size: 1.5rem;
+         }
+          .content-block p, .content-block ul {
+             font-size: 0.9rem;
+         }
+          .content-block ul li {
+             padding-left: 1.7rem; /* Adjust icon padding for smaller screens */
+         }
+         .content-block ul li::before {
+             font-size: 1rem; /* Slightly smaller icon */
+         }
+     }
+  </style>
+</head>
+<body>
+
+  <!-- Header Section -->
+  <div class="page-header">
+    <h1>Terms & Conditions</h1>
+    <p class="lead">Please read these terms carefully before using our services.</p>
+    <small>Effective Date: April 23, 2025</small>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="content-block">
+
+      <h2>1. Acceptance of Terms</h2>
+      <p>By accessing our website, using our mobile application, or placing an order with Sardaarji's Kitchen ("we", "us", "our"), you agree to be bound by these Terms & Conditions and our <a href="privacy.html">Privacy Policy</a>. If you do not agree to these terms, please do not use our services.</p>
+
+      <h2>2. Ordering & Payment</h2>
+      <ul>
+        <li>All orders placed through our platform are subject to acceptance and availability. We reserve the right to refuse an order for any reason (e.g., item unavailability, delivery area restrictions).</li>
+        <li>You agree to provide accurate and complete information for all orders, including delivery address and contact details.</li>
+        <li>Prices listed on our menu are inclusive of applicable taxes (like GST) unless stated otherwise. Delivery charges, if any, will be displayed during the checkout process.</li>
+        <li>Payment must be made at the time of ordering (for online payments) or upon delivery (for Cash on Delivery, if available). Accepted payment methods are displayed at checkout.</li>
+        <li>We reserve the right to change prices and offers without prior notice, but changes will not affect orders already confirmed.</li>
+      </ul>
+
+      <h2>3. Delivery</h2>
+      <ul>
+        <li>We aim to deliver your order within the estimated timeframe provided. However, delivery times are estimates only and may vary due to factors like traffic, weather, or high order volume. We are not liable for reasonable delays beyond our direct control.</li>
+        <li>You are responsible for ensuring someone is available to receive the order at the specified delivery address during the estimated delivery window.</li>
+        <li>We reserve the right to refuse delivery to locations deemed unsafe or inaccessible by our delivery personnel. Additional charges may apply for re-delivery attempts if the initial attempt fails due to customer unavailability or incorrect address information.</li>
+        <li>Risk of loss and title for food products pass to you upon delivery. Please inspect your order upon arrival.</li>
+      </ul>
+
+      <h2>4. Changes, Cancellations & Refunds</h2>
+      <ul>
+        <li>Once an order is confirmed, modifications (like adding/removing items or changing the address) are generally not possible due to immediate preparation processes.</li>
+        <li>Order cancellations are subject to the terms outlined in our <a href="refund.html" title="View our Refund Policy">Refund Policy</a>. Typically, cancellations are only possible within a very short window (e.g., 5 minutes) after placing the order.</li>
+        <li>Issues regarding incorrect, damaged, or missing items must be reported promptly as per our Refund Policy to be eligible for resolution.</li>
+      </ul>
+
+       <h2>5. Use of Services & Content</h2>
+      <ul>
+        <li>You agree to use our website and app for lawful purposes only and not to misuse them (e.g., attempting unauthorized access, transmitting harmful code).</li>
+        <li>All content on our platform (text, images, logos, menu designs) is the property of Sardaarji's Kitchen or its licensors and is protected by copyright and other intellectual property laws. You may not reproduce, distribute, or modify any content without our prior written consent.</li>
+      </ul>
+
+      <h2>6. Disclaimers & Limitation of Liability</h2>
+      <ul>
+          <li>While we strive for accuracy, menu descriptions, prices, and images may occasionally contain errors. We reserve the right to correct any errors. Allergen information is provided based on supplier data; please contact us directly if you have severe allergies.</li>
+          <li>To the fullest extent permitted by law, Sardaarji's Kitchen shall not be liable for any indirect, incidental, or consequential damages arising from the use of our services or products. Our total liability for any claim related to an order shall not exceed the amount paid for that order.</li>
+      </ul>
+
+       <h2>7. Governing Law</h2>
+      <ul>
+          <li>These Terms & Conditions shall be governed by and construed in accordance with the laws of India. Any disputes arising shall be subject to the exclusive jurisdiction of the courts located in [Your City/Jurisdiction, e.g., Punjab].</li>
+      </ul>
+
+       <h2>8. Changes to Terms</h2>
+        <p>We reserve the right to modify these Terms & Conditions at any time. Changes will be effective immediately upon posting on our website. Your continued use of our services after changes are posted constitutes your acceptance of the revised terms.</p>
+
+      <!-- Back Button -->
+      <div class="text-center mt-5"> <!-- Increased top margin -->
+        <a href="index.html" class="btn btn-main">
+          <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <footer>
+    <div>Sardaarji's Kitchen &copy; 2025. All Rights Reserved.</div>
+  </footer>
+
+  <!-- Bootstrap JS Bundle (includes Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- No custom JS needed for this static page -->
+
+</body>
+</html>

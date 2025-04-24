@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FAQs - Sardaarji's Kitchen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome (for Back button icon) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* --- Root Variables (from main theme) --- */
+    :root {
+        --primary-color: #FF7E1F; /* Orange */
+        --primary-dark: #E06000;
+        --secondary-color: #4CAF50; /* Green */
+        --accent-color: #FFC107; /* Yellow */
+        --dark-color: #333333;
+        --darker-bg: #222222; /* Footer background */
+        --light-color: #F8F9FA;
+        --text-color: #212529;
+        --background-light: #f9f7f4; /* Light beige background */
+        --white: #ffffff;
+        --grey-light: #eee;
+        --grey-medium: #999;
+        --grey-dark: #666;
+        --border-color-light: #dee2e6;
+        --border-radius: 15px;
+        --border-radius-sm: 8px; /* Slightly larger radius for accordion */
+        --shadow-light: 0 6px 15px rgba(0,0,0,0.08);
+        --shadow-medium: 0 10px 30px rgba(0,0,0,0.1);
+
+        /* Bootstrap Accordion Customization */
+        --bs-accordion-color: var(--text-color);
+        --bs-accordion-bg: var(--white);
+        --bs-accordion-border-color: var(--border-color-light);
+        --bs-accordion-border-radius: var(--border-radius-sm);
+        --bs-accordion-inner-border-radius: calc(var(--border-radius-sm) - 1px); /* Adjust inner radius */
+        --bs-accordion-btn-padding-x: 1.5rem;
+        --bs-accordion-btn-padding-y: 1.2rem;
+        --bs-accordion-btn-color: var(--text-color);
+        --bs-accordion-btn-bg: var(--bs-accordion-bg);
+        --bs-accordion-btn-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23666'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        --bs-accordion-btn-icon-active: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e"); /* White arrow when active */
+        --bs-accordion-btn-focus-border-color: var(--primary-color); /* Focus border */
+        --bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem rgba(255, 126, 31, 0.25); /* Focus shadow */
+        --bs-accordion-body-padding-x: 1.5rem;
+        --bs-accordion-body-padding-y: 1rem;
+        --bs-accordion-active-color: var(--white); /* Active button text color */
+        --bs-accordion-active-bg: var(--primary-color); /* Active button background */
+    }
+
+    /* --- Base Styles --- */
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: var(--background-light);
+        color: var(--text-color);
+        line-height: 1.6;
+    }
+
+    h1, h2, h3, h4 {
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+        color: var(--dark-color);
+    }
+
+    a {
+        color: var(--primary-color);
+        text-decoration: none;
+    }
+    a:hover {
+        color: var(--primary-dark);
+    }
+
+    /* --- Page Header --- */
+    .page-header {
+        background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+        color: var(--white);
+        padding: 4rem 1rem;
+        text-align: center;
+        margin-bottom: 2rem;
+        border-bottom: 5px solid var(--primary-dark);
+    }
+
+    .page-header h1 {
+        font-weight: 700;
+        font-size: 3rem;
+        color: var(--white);
+        margin-bottom: 0.5rem;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+
+    .page-header p.lead {
+        font-weight: 300;
+        font-size: 1.2rem;
+        opacity: 0.9;
+    }
+
+    /* --- Content Block Styling --- */
+    .content-block {
+        background: var(--white);
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-medium);
+        padding: 2.5rem 2rem;
+        margin: 2rem auto;
+        max-width: 850px; /* Slightly wider for FAQs */
+        border-top: 5px solid var(--primary-color);
+    }
+
+    .content-block h2.block-title { /* Optional title for the block */
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid var(--grey-light);
+        color: var(--dark-color);
+        text-align: center;
+    }
+
+    /* --- Accordion Styling --- */
+    .accordion {
+        /* Use Bootstrap variables defined in :root */
+        --bs-accordion-border-width: 1px;
+    }
+
+    .accordion-item {
+        margin-bottom: 1rem; /* Add space between items */
+        border: 1px solid var(--bs-accordion-border-color); /* Ensure border is visible */
+        border-radius: var(--bs-accordion-border-radius) !important; /* Ensure radius applies */
+        overflow: hidden; /* Ensure radius is applied correctly */
+    }
+    /* Remove bottom margin from last item */
+    .accordion-item:last-of-type {
+        margin-bottom: 0;
+    }
+
+    /* .accordion-header {
+        /* Header doesn't need specific styles unless overriding */
+    /* } */ */
+
+    .accordion-button {
+        font-weight: 500; /* Make question text slightly bolder */
+        font-size: 1.1rem;
+    }
+
+    .accordion-button:not(.collapsed) {
+        /* Active state styles are handled by Bootstrap variables in :root */
+        box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.15); /* Subtle inner shadow */
+    }
+
+    .accordion-button::after {
+        /* Arrow icon styling is handled by Bootstrap variables */
+        flex-shrink: 0; /* Prevent icon from shrinking */
+        width: 1.1rem; /* Slightly smaller icon */
+        height: 1.1rem;
+        background-size: 1.1rem;
+    }
+
+    .accordion-body {
+        color: var(--grey-dark); /* Softer text color for answers */
+        font-size: 0.95rem;
+    }
+
+    /* --- Button Styling --- */
+    .btn-main {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+        color: var(--white);
+        padding: 0.8rem 2rem;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 8px rgba(255, 126, 31, 0.3);
+        border: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .btn-main:hover {
+        background-color: var(--primary-dark);
+        border-color: var(--primary-dark);
+        color: var(--white);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(255, 126, 31, 0.4);
+    }
+
+    /* --- Footer Styling --- */
+    footer {
+        background-color: var(--darker-bg);
+        color: rgba(255, 255, 255, 0.7);
+        text-align: center;
+        padding: 2rem 1rem;
+        margin-top: 4rem;
+        font-size: 0.9rem;
+    }
+
+     /* --- Responsive --- */
+     @media (max-width: 768px) {
+         .page-header h1 {
+             font-size: 2.5rem;
+         }
+         .content-block {
+             padding: 2rem 1.5rem;
+             margin: 1.5rem auto;
+         }
+          .accordion-button {
+             font-size: 1rem;
+             padding: 1rem 1.25rem;
+         }
+         .accordion-body {
+             padding: 1rem 1.25rem;
+         }
+     }
+     @media (max-width: 576px) {
+         .page-header {
+             padding: 3rem 1rem;
+         }
+         .page-header h1 {
+             font-size: 2rem;
+         }
+          .page-header p.lead {
+             font-size: 1rem;
+         }
+         .content-block {
+             padding: 1.5rem 1rem;
+             margin: 1rem auto;
+         }
+         .accordion-button {
+             font-size: 0.95rem;
+         }
+     }
+  </style>
+</head>
+<body>
+
+  <!-- Header Section -->
+  <div class="page-header">
+    <h1>Frequently Asked Questions</h1>
+    <p class="lead">Find answers to common queries about Sardaarji's Kitchen</p>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="content-block">
+      <!-- Accordion Start -->
+      <div class="accordion" id="faqAccordion">
+
+        <!-- FAQ Item 1 -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingFaq1">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFaq1" aria-expanded="true" aria-controls="collapseFaq1">
+              What are your delivery hours and areas?
+            </button>
+          </h2>
+          <div id="collapseFaq1" class="accordion-collapse collapse show" aria-labelledby="headingFaq1" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              We deliver daily from <strong>11:00 AM to 10:00 PM</strong> within a 10km radius of our restaurant location (123 Food Street, Punjab). You can check delivery availability to your address during checkout.
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ Item 2 -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingFaq2">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFaq2" aria-expanded="false" aria-controls="collapseFaq2">
+              Do you offer vegetarian and vegan options?
+            </button>
+          </h2>
+          <div id="collapseFaq2" class="accordion-collapse collapse" aria-labelledby="headingFaq2" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              Absolutely! Our menu boasts a wide variety of delicious vegetarian dishes, clearly marked with a green symbol. We also offer several vegan options prepared without any dairy or animal products. Please check item descriptions for details or ask our staff for recommendations.
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ Item 3 -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingFaq3">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFaq3" aria-expanded="false" aria-controls="collapseFaq3">
+              How can I track my online order?
+            </button>
+          </h2>
+          <div id="collapseFaq3" class="accordion-collapse collapse" aria-labelledby="headingFaq3" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              Once your order is confirmed and dispatched with our delivery partner, you will receive an SMS containing a tracking link. You can click this link to see the real-time status and location of your delivery. You can also track orders via our mobile app.
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ Item 4 -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingFaq4">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFaq4" aria-expanded="false" aria-controls="collapseFaq4">
+              Is it possible to cancel or modify my order after placing it?
+            </button>
+          </h2>
+          <div id="collapseFaq4" class="accordion-collapse collapse" aria-labelledby="headingFaq4" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              Orders can typically be cancelled directly through our website or app within <strong>5 minutes</strong> of placing them. After this window, the order processing begins, and cancellation is usually not possible. Unfortunately, we cannot accommodate order modifications (like adding/removing items or changing the address) once an order is confirmed. Please review your order carefully before checkout.
+            </div>
+          </div>
+        </div>
+
+         <!-- FAQ Item 5 -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingFaq5">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFaq5" aria-expanded="false" aria-controls="collapseFaq5">
+              What payment methods do you accept?
+            </button>
+          </h2>
+          <div id="collapseFaq5" class="accordion-collapse collapse" aria-labelledby="headingFaq5" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              We accept various payment methods for online orders, including major Credit Cards, Debit Cards, UPI (like Google Pay, PhonePe), Net Banking, and select mobile wallets. We also offer Cash on Delivery (COD) for most locations, subject to order value limits.
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ Item 6 -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingFaq6">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFaq6" aria-expanded="false" aria-controls="collapseFaq6">
+              How do I contact customer support if I have an issue?
+            </button>
+          </h2>
+          <div id="collapseFaq6" class="accordion-collapse collapse" aria-labelledby="headingFaq6" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              We're here to help! You can reach our customer support team by:
+              <ul>
+                <li>Calling us directly at: <strong>+91 1234567890</strong> during operating hours.</li>
+                <li>Emailing us at: <strong>info@sardaarjikitchen.com</strong></li>
+                <li>Using the contact form on our <a href="contact.html" title="Go to Contact Page">Contact Us page</a>.</li>
+              </ul>
+               Please provide your order number (if applicable) for faster assistance.
+            </div>
+          </div>
+        </div>
+         <!-- Add more FAQ items as needed -->
+
+      </div>
+      <!-- Accordion End -->
+
+      <!-- Back Button -->
+      <div class="text-center mt-5"> <!-- Increased top margin -->
+        <a href="index.html" class="btn btn-main">
+          <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <footer>
+    <div>Sardaarji's Kitchen &copy; 2025. All Rights Reserved.</div>
+  </footer>
+
+  <!-- Bootstrap JS Bundle (includes Popper) - Required for Accordion -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

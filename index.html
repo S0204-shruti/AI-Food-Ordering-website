@@ -1,0 +1,1576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sardaarji's Kitchen - Authentic Punjabi Cuisine</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #FF7E1F;
+            --primary-dark: #E06000;
+            --secondary-color: #4CAF50;
+            --secondary-dark: #388E3C;
+            --accent-color: #FFC107;
+            --dark-color: #333333;
+            --light-color: #F8F9FA;
+            --text-color: #212529;
+            --gold: #D4AF37;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f7f4;
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+        
+        /* Header Styles */
+        .top-bar {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 8px 0;
+            font-size: 0.9rem;
+        }
+        
+        .top-bar i {
+            color: var(--accent-color);
+            margin-right: 5px;
+        }
+        
+        .site-header {
+            background: url('https://images.unsplash.com/photo-1505253758473-96b7015fcd40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') no-repeat center center;
+            background-size: cover;
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .site-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.5));
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .site-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            font-size: 3.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            color: white;
+        }
+        
+        .site-header p.lead {
+            font-weight: 300;
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+        }
+        
+        .header-badge {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        /* Category Icons */
+        .category-nav {
+            background-color: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-top: -3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 10;
+        }
+        
+        .category-icons {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .category-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, color 0.3s ease;
+            color: var(--dark-color);
+            text-decoration: none;
+            position: relative;
+            padding: 0.5rem;
+        }
+        
+        .category-icon::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background-color: var(--primary-color);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .category-icon:hover {
+            transform: translateY(-5px);
+            color: var(--primary-color);
+        }
+        
+        .category-icon:hover::after {
+            width: 80%;
+        }
+        
+        .category-icon i {
+            font-size: 2.2rem;
+            margin-bottom: 0.8rem;
+            transition: all 0.3s ease;
+        }
+        
+        .category-icon span {
+            font-weight: 500;
+        }
+        
+        /* Hero Banner */
+        .hero-banner {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin: 3rem 0;
+        }
+        
+        .hero-content {
+            padding: 3rem 2rem;
+        }
+        
+        .hero-content h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--dark-color);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            font-size: 2.5rem;
+        }
+        
+        .hero-content p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .hero-image {
+            height: 100%;
+            min-height: 400px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .hero-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            line-height: 1.2;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transform: rotate(10deg);
+        }
+        
+        .hero-badge span:first-child {
+            font-size: 1.5rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(255, 126, 31, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(255, 126, 31, 0.4);
+        }
+        
+        /* Special Offers Section */
+        .special-offers {
+            padding: 3rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .offer-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .offer-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .offer-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .offer-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .offer-content {
+            padding: 1.5rem;
+        }
+        
+        .offer-title {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+            color: var(--dark-color);
+        }
+        
+        .offer-desc {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .offer-price {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .current-price {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-right: 1rem;
+        }
+        
+        .old-price {
+            color: #999;
+            text-decoration: line-through;
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+            border-radius: 50px;
+            padding: 0.5rem 1.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(255, 126, 31, 0.3);
+        }
+        
+        /* Featured Categories */
+        .featured-categories {
+            padding: 4rem 0;
+            background-color: #f9f7f4;
+        }
+        
+        .category-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+            position: relative;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .category-card:hover .category-img img {
+            transform: scale(1.05);
+        }
+        
+        .category-img {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .category-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+        
+        .category-content {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .category-content h3 {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+            color: var(--dark-color);
+        }
+        
+        .category-content p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+        
+        .category-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 1.5rem;
+            background-color: #f9f7f4;
+        }
+        
+        .category-rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .category-rating i {
+            color: var(--accent-color);
+        }
+        
+        .category-time {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #666;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 4rem 0;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') no-repeat center center;
+            background-size: cover;
+            color: white;
+        }
+        
+        .testimonial-card {
+            background-color: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            background-color: rgba(255,255,255,0.15);
+        }
+        
+        .testimonial-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            overflow: hidden;
+            border: 3px solid var(--primary-color);
+        }
+        
+        .testimonial-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .testimonial-role {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Popular Items */
+        .popular-items {
+            padding: 4rem 0;
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .menu-item {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .menu-item-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .menu-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+        
+        .menu-item-info {
+            padding: 1.5rem;
+        }
+        
+        .menu-item-title {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+            color: var(--dark-color);
+        }
+        
+        .menu-item-price {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        
+        
+        
+        /* Download App Section */
+        .download-app {
+            padding: 4rem 0;
+            background-color: var(--dark-color);
+            color: white;
+        }
+        
+        .app-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+        }
+        
+        .app-content p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+        
+        .app-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .app-btn {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            color: var(--dark-color);
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .app-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .app-btn i {
+            font-size: 2rem;
+            margin-right: 1rem;
+        }
+        
+        .app-btn-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .app-btn-text span:first-child {
+            font-size: 0.8rem;
+        }
+        
+        .app-btn-text span:last-child {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .app-image {
+            text-align: center;
+        }
+        
+        .app-image img {
+            max-width: 80%;
+            transform: translateY(-20px);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-logo {
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-logo h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+        }
+        
+        .footer-about p {
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+        
+        .footer-title {
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: white;
+            opacity: 0.8;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+        
+        .footer-contact p {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+        
+        .footer-contact i {
+            color: var(--primary-color);
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.7;
+        }
+        
+        /* Cart Styles */
+        .cart-container {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 2rem;
+            position: sticky;
+            top: 2rem;
+        }
+        
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+        
+        .cart-title {
+            font-weight: 600;
+            font-size: 1.5rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .cart-title i {
+            color: var(--primary-color);
+        }
+        
+        .cart-count {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .cart-items {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 1.5rem;
+            padding-right: 5px;
+        }
+        
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-item-info {
+            flex-grow: 1;
+        }
+        
+        .cart-item-title {
+            font-weight: 500;
+            margin: 0 0 0.25rem 0;
+        }
+        
+        .cart-item-price {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: none;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .quantity-btn:hover {
+            background-color: #e0e0e0;
+        }
+        
+        .empty-cart-message {
+            text-align: center;
+            padding: 2rem 0;
+            color: #888;
+            font-style: italic;
+        }
+        
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .cart-total-price {
+            color: var(--primary-color);
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .site-header h1 {
+                font-size: 3rem;
+            }
+            
+            .hero-content {
+                padding: 2rem;
+            }
+            
+            .hero-content h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-image {
+                min-height: 300px;
+            }
+            
+            .menu-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .cart-container {
+                position: static;
+                margin-top: 2rem;
+            }
+            
+            .app-image {
+                margin-top: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .site-header {
+                padding: 3rem 0;
+            }
+            
+            .site-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .category-icons {
+                gap: 1.5rem;
+            }
+            
+            .category-icon i {
+                font-size: 1.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .menu-grid {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                gap: 1.5rem;
+            }
+            
+            .app-buttons {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .site-header {
+                padding: 2.5rem 0;
+            }
+            
+            .site-header h1 {
+                font-size: 2rem;
+            }
+            
+            .header-badge {
+                padding: 0.4rem 1.2rem;
+                font-size: 0.9rem;
+            }
+            
+            .category-nav {
+                padding: 1rem;
+            }
+            
+            .category-icons {
+                gap: 1rem;
+            }
+            
+            .category-icon i {
+                font-size: 1.5rem;
+            }
+            
+            .hero-content h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-badge {
+                width: 80px;
+                height: 80px;
+                font-size: 0.9rem;
+            }
+            
+            .hero-badge span:first-child {
+                font-size: 1.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .app-content h2 {
+                font-size: 1.8rem;
+            }
+            
+            .app-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <span><i class="fas fa-phone"></i> +91 9935307380</span>
+                    <span class="ms-3"><i class="fas fa-envelope"></i> sardarjikemashoorcholebhature@gmail.com</span>
+                </div>
+                <div class="col-md-6 text-end">
+                    <span><i class="fas fa-clock"></i> Open: 08:00 AM - 10:00 PM</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Header Section -->
+    <header class="site-header">
+        <div class="container header-content">
+            <div class="header-badge">Since 1995</div>
+            <h1>Sardaarji's Kitchen</h1>
+            <p class="lead">Experience the authentic taste of Punjab with our traditional recipes and fresh ingredients.</p>
+            <a href="#featured-menu" class="btn btn-primary btn-lg">Explore Our Menu</a>
+        </div>
+    </header>
+    
+    <!-- Category Navigation -->
+    <div class="container">
+        <div class="category-nav">
+            <div class="category-icons">
+                <a href="Punjabi.html" class="category-icon">
+                    <i class="fas fa-utensils"></i>
+                    <span>Punjabi</span>
+                </a>
+                <a href="fast-food.html" class="category-icon">
+                    <i class="fas fa-hamburger"></i>
+                    <span>Fast Food</span>
+                </a>
+                <a href="dessert.html" class="category-icon">
+                    <i class="fas fa-ice-cream"></i>
+                    <span>Desserts</span>
+                </a>
+                <a href="pizza.html" class="category-icon">
+                    <i class="fas fa-pizza-slice"></i>
+                    <span>Pizza</span>
+                </a>
+                <a href="beverage.html" class="category-icon">
+                    <i class="fas fa-mug-hot"></i>
+                    <span>Beverages</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Hero Banner -->
+    <div class="container">
+        <div class="hero-banner">
+            <div class="row g-0">
+                <div class="col-lg-6">
+                    <div class="hero-content">
+                        <h2>Friday Special Offer!</h2>
+                        <p>Celebrate the flavors of Punjab with our special Friday offer. Order any two main course items and get a complimentary dessert of your choice. Valid only today, April 25, 2025!</p>
+                        <a href="Punjabi.html" class="btn btn-primary">Order Now</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-image" style="background-image: url('https://images.unsplash.com/photo-1585937421612-70a008356fbe?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                        <div class="hero-badge">
+                            <span>20%</span>
+                            <span>OFF</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Special Offers -->
+    <section class="special-offers">
+        <div class="container">
+            <div class="section-title">
+                <h2>Today's Special Offers</h2>
+                <p>Indulge in our chef's special creations, available for a limited time only.</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="offer-card">
+                        <div class="offer-img" style="background-image: url('https://i.ndtvimg.com/i/2018-01/sarso-ka-saag-makki-ki-roti_620x330_71515659401.jpg');">
+                            <div class="offer-badge">20% OFF</div>
+                        </div>
+                        <div class="offer-content">
+                            <h3 class="offer-title">Sarso ka Saag & Makki di Roti Combo</h3>
+                            <p class="offer-desc">Traditional Punjabi mustard greens served with cornmeal flatbread and a dollop of white butter.</p>
+                            <div class="offer-price">
+                                <span class="current-price">₹160</span>
+                                <span class="old-price">₹200</span>
+                            </div>
+                            <button class="btn btn-outline-primary" onclick="addToCart('Sarso ka Saag & Makki di Roti Combo', 160)"></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="offer-card">
+                        <div class="offer-img" style="background-image: url('https://amritsruae.com/blog/wp-content/uploads/2022/01/paneer-tikka-masala.jpg');">
+                            <div class="offer-badge">New</div>
+                        </div>
+                        <div class="offer-content">
+                            <h3 class="offer-title">Paneer Tikka Masala</h3>
+                            <p class="offer-desc">Grilled cottage cheese cubes in a rich and creamy tomato-based gravy with aromatic spices.</p>
+                            <div class="offer-price">
+                                <span class="current-price">₹180</span>
+                            </div>
+                            <button class="btn btn-outline-primary" onclick=" ('Paneer Tikka Masala', 180)"></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="offer-card">
+                        <div class="offer-img" style="background-image: url('https://www.cookwithkushi.com/wp-content/uploads/2016/08/BeFunky-Collage-1.jpg');">
+                            <div class="offer-badge">15% OFF</div>
+                        </div>
+                        <div class="offer-content">
+                            <h3 class="offer-title">Dessert Platter</h3>
+                            <p class="offer-desc">Assortment of traditional Indian sweets including Gulab Jamun, Rasgulla, and Gajar Halwa.</p>
+                            <div class="offer-price">
+                                <span class="current-price">₹170</span>
+                                <span class="old-price">₹200</span>
+                            </div>
+                            <button class="btn btn-outline-primary" onclick="('Dessert Platter', 170)"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Featured Categories -->
+    <section class="featured-categories" id="featured-menu">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Specialties</h2>
+                <p>Explore our diverse menu categories, each offering authentic flavors and culinary excellence.</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <a href="Punjabi.html" class="text-decoration-none">
+                        <div class="category-card">
+                            <div class="category-img">
+                                <img src="https://i.ytimg.com/vi/611oL_6jYp0/maxresdefault.jpg" alt="Punjabi Food">
+                            </div>
+                            <div class="category-content">
+                                <h3>Authentic Punjabi</h3>
+                                <p>Traditional flavors from Punjab prepared with authentic recipes and fresh ingredients.</p>
+                                <button class="btn btn-primary">Explore Menu</button>
+                            </div>
+                            <div class="category-meta">
+                                <div class="category-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.8</span>
+                                </div>
+                                <div class="category-time">
+                                    <i class="far fa-clock"></i>
+                                    <span>30-40 min</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <a href="dessert.html" class="text-decoration-none">
+                        <div class="category-card">
+                            <div class="category-img">
+                                <img src="https://aartimadan.com/wp-content/uploads/2020/11/milk-powder-gulab-jamuns.jpg" alt="Desserts">
+                            </div>
+                            <div class="category-content">
+                                <h3>Sweet Delights</h3>
+                                <p>Indulge in our sweet treats and traditional Indian desserts that will satisfy your cravings.</p>
+                                <button class="btn btn-primary">Explore Menu</button>
+                            </div>
+                            <div class="category-meta">
+                                <div class="category-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.7</span>
+                                </div>
+                                <div class="category-time">
+                                    <i class="far fa-clock"></i>
+                                    <span>15-25 min</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <a href="fast-food.html" class="text-decoration-none">
+                        <div class="category-card">
+                            <div class="category-img">
+                                <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Fast Food">
+                            </div>
+                            <div class="category-content">
+                                <h3>Fast Food Favorites</h3>
+                                <p>Quick and delicious options that combine Indian flavors with global fast food favorites.</p>
+                                <button class="btn btn-primary">Explore Menu</button>
+                            </div>
+                            <div class="category-meta">
+                                <div class="category-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.6</span>
+                                </div>
+                                <div class="category-time">
+                                    <i class="far fa-clock"></i>
+                                    <span>20-30 min</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-lg-6 col-md-6 mb-4">
+                    <a href="pizza.html" class="text-decoration-none">
+                        <div class="category-card">
+                            <div class="category-img">
+                                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Pizza">
+                            </div>
+                            <div class="category-content">
+                                <h3>Pizza Collection</h3>
+                                <p>Delicious handcrafted pizzas with a unique Indian twist that will tantalize your taste buds.</p>
+                                <button class="btn btn-primary">Explore Menu</button>
+                            </div>
+                            <div class="category-meta">
+                                <div class="category-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.5</span>
+                                </div>
+                                <div class="category-time">
+                                    <i class="far fa-clock"></i>
+                                    <span>25-35 min</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="col-lg-6 col-md-6 mb-4">
+                    <a href="beverage.html" class="text-decoration-none">
+                        <div class="category-card">
+                            <div class="category-img">
+                                <img src="https://www.jaipurstuff.com/wp-content/uploads/2019/04/Lassi.jpg" alt="Beverages">
+                            </div>
+                            <div class="category-content">
+                                <h3>Refreshing Beverages</h3>
+                                <p>Traditional and modern drinks to complement your meal or quench your thirst.</p>
+                                <button class="btn btn-primary">Explore Menu</button>
+                            </div>
+                            <div class="category-meta">
+                                <div class="category-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.7</span>
+                                </div>
+                                <div class="category-time">
+                                    <i class="far fa-clock"></i>
+                                    <span>10-15 min</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Customers Say</h2>
+                <p>Hear from our satisfied customers about their dining experience with us.</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-img">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Customer">
+                        </div>
+                        <p class="testimonial-text">"The Sarso ka Saag and Makki di Roti transported me straight to Punjab. Authentic flavors and generous portions make this place a must-visit for anyone craving real Punjabi food."</p>
+                        <h4 class="testimonial-author">Rajesh Kumar</h4>
+                        <p class="testimonial-role">Food Blogger</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-img">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Customer">
+                        </div>
+                        <p class="testimonial-text">"I ordered the Paneer Tikka Masala and it was divine! The delivery was prompt and the food was still hot. Will definitely be ordering again soon!"</p>
+                        <h4 class="testimonial-author">Priya Singh</h4>
+                        <p class="testimonial-role">Regular Customer</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-img">
+                            <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Customer">
+                        </div>
+                        <p class="testimonial-text">"The dessert platter is an absolute delight! Each sweet is perfectly made and the flavors are authentic. Sardaarji's Kitchen has become our go-to place for family celebrations."</p>
+                        <h4 class="testimonial-author">Amit Patel</h4>
+                        <p class="testimonial-role">Foodie</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Popular Items -->
+    <section class="popular-items">
+        <div class="container">
+            <div class="section-title">
+                <h2>Popular Items</h2>
+                <p>Our most loved dishes that keep our customers coming back for more.</p>
+            </div>
+            
+            <div class="menu-grid">
+                <!-- Item 1 -->
+                <div class="menu-item">
+                    <div class="menu-item-img" style="background-image: url('https://im.whatshot.in/img/2020/Jan/shutterstock-519409210-cropped-1578307661.jpg');">
+                        <div class="menu-badge">Bestseller</div>
+                    </div>
+                    <div class="menu-item-info">
+                        <h4 class="menu-item-title">Sarso ka Saag</h4>
+                        <p>Traditional Punjabi dish made with mustard greens, served with a dollop of butter.</p>
+                        <div class="menu-item-price">₹100</div>
+                        <button class="btn-add-cart" onclick="addToCart('Sarso ka Saag', 100)"> </button>
+                    </div>
+                </div>
+                
+                <!-- Item 2 -->
+                <div class="menu-item">
+                    <div class="menu-item-img" style="background-image: url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                        <div class="menu-badge">Popular</div>
+                    </div>
+                    <div class="menu-item-info">
+                        <h4 class="menu-item-title">Chicken Burger</h4>
+                        <p>Juicy chicken patty with fresh vegetables and our special sauce.</p>
+                        <div class="menu-item-price">₹100</div>
+                        <button class="btn-add-cart" onclick="addToCart('Chicken Burger', 100)"> </button>
+                    </div>
+                </div>
+                
+                <!-- Item 3 -->
+                <div class="menu-item">
+                    <div class="menu-item-img" style="background-image: url('https://images.slurrp.com/prodarticles/f18q59vrmav.webp');">
+                        <div class="menu-badge">Refreshing</div>
+                    </div>
+                    <div class="menu-item-info">
+                        <h4 class="menu-item-title">Sweet Lassi</h4>
+                        <p>Creamy yogurt drink sweetened with sugar and flavored with cardamom.</p>
+                        <div class="menu-item-price">₹50</div>
+                        <button class="btn-add-cart" onclick="addToCart('Sweet Lassi', 50)"> </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="footer-logo">
+                        <h3>Sardaarji's Kitchen</h3>
+                    </div>
+                    <div class="footer-about">
+                        <p>Authentic Punjabi cuisine delivered to your doorstep. We pride ourselves on using the freshest ingredients and traditional cooking methods to bring you the true flavors of Punjab.</p>
+                    </div>
+                    <div class="footer-social">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="Punjabi.html">Punjabi</a></li>
+                        <li><a href="dessert.html">Desserts</a></li>
+                        <li><a href="fast-food.html">Fast Food</a></li>
+                        <li><a href="pizza.html">Pizza</a></li>
+                        <li><a href="beverage.html">Beverages</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h4 class="footer-title">Help & Info</h4>
+                    <ul class="footer-links">
+                        <!-- New Section Links -->
+                        <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+                        <li><a href="privacy.html"><i class="fas fa-user-secret"></i> Privacy Policy</a></li>
+                        <li><a href="terms.html"><i class="fas fa-file-contract"></i> Terms & Conditions</a></li>
+                        <li><a href="refund.html"><i class="fas fa-undo"></i> Refund Policy</a></li>
+                        <li><a href="faq.html"><i class="fas fa-question-circle"></i> FAQs</a></li>
+                        <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h4 class="footer-title">Contact Us</h4>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-phone"></i> +91 9935307380</p>
+                        <p><i class="fas fa-envelope"></i> sardarjikemashoorcholebhature@gmail.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 42, Lalbagh, Trilokinath Marg, Lucknow, Uttar Pradesh 226001</p>
+                        <p><i class="fas fa-clock"></i> Open: 08:00 AM - 10:00 PM</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Sardaarji's Kitchen. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        let cart = [];
+        let totalPrice = 0;
+        
+        // Add item to cart
+        function addToCart(item, price) {
+            // Check if item already exists in cart
+            const existingItem = cart.find(cartItem => cartItem.item === item);
+            
+            if (existingItem) {
+                existingItem.quantity++;
+                existingItem.totalPrice = existingItem.price * existingItem.quantity;
+            } else {
+                cart.push({ 
+                    item, 
+                    price, 
+                    quantity: 1,
+                    totalPrice: price
+                });
+            }
+            
+            // Show notification
+            showNotification(`${item} added to cart!`);
+            
+            updateCart();
+            saveCart();
+        }
+        
+        // Update cart display
+        function updateCart() {
+            const cartItems = document.getElementById('cart-items');
+            const cartCount = document.getElementById('cart-count');
+            
+            // Clear cart
+            cartItems.innerHTML = '';
+            
+            // Calculate total
+            totalPrice = 0;
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<div class="empty-cart-message">Your cart is empty</div>';
+                cartCount.textContent = '0 items';
+            } else {
+                cartCount.textContent = `${cart.length} items`;
+                
+                // Add items to cart
+                cart.forEach((item, index) => {
+                    totalPrice += item.totalPrice;
+                    
+                    const cartItem = document.createElement('div');
+                    cartItem.className = 'cart-item';
+                    cartItem.innerHTML = `
+                        <div class="cart-item-info">
+                            <h5 class="cart-item-title">${item.item}</h5>
+                            <p class="cart-item-price">₹${item.price} × ${item.quantity}</p>
+                        </div>
+                        <div class="cart-item-quantity">
+                            <button class="quantity-btn" onclick="decreaseQuantity(${index})">-</button>
+                            <span>${item.quantity}</span>
+                            <button class="quantity-btn" onclick="increaseQuantity(${index})">+</button>
+                        </div>
+                    `;
+                    
+                    cartItems.appendChild(cartItem);
+                });
+            }
+            
+            // Update total price
+            document.getElementById('total-price').textContent = `₹${totalPrice}`;
+        }
+        
+        // Save cart to localStorage
+        function saveCart() {
+            localStorage.setItem('sardaarjiCart', JSON.stringify(cart));
+        }
+        
+        // Load cart from localStorage
+        function loadCart() {
+            const savedCart = localStorage.getItem('sardaarjiCart');
+            if (savedCart) {
+                cart = JSON.parse(savedCart);
+                updateCart();
+            }
+        }
+        
+        // Increase item quantity
+        function increaseQuantity(index) {
+            cart[index].quantity++;
+            cart[index].totalPrice = cart[index].price * cart[index].quantity;
+            updateCart();
+            saveCart();
+        }
+        
+        // Decrease item quantity
+        function decreaseQuantity(index) {
+            if (cart[index].quantity > 1) {
+                cart[index].quantity--;
+                cart[index].totalPrice = cart[index].price * cart[index].quantity;
+            } else {
+                cart.splice(index, 1);
+            }
+            updateCart();
+            saveCart();
+        }
+        
+        // Checkout
+        function checkout() {
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const address = document.getElementById('address').value;
+            
+            if (!name || !phone || !address) {
+                alert('Please fill in all delivery information');
+                return;
+            }
+            
+            if (cart.length === 0) {
+                alert('Your cart is empty. Please add items to your cart.');
+                return;
+            }
+            
+            // In a real application, you would send this data to a server
+            alert(`Order placed successfully!\n\nOrder Details:\n${cart.map(item => `${item.item} × ${item.quantity}`).join('\n')}\n\nTotal: ₹${totalPrice}\nPayment Method: Cash on Delivery\n\nDelivery Details:\n${name}\n${phone}\n${address}`);
+            
+            // Clear cart after successful order
+            cart = [];
+            totalPrice = 0;
+            updateCart();
+            saveCart();
+            document.getElementById('name').value = '';
+            document.getElementById('phone').value = '';
+            document.getElementById('address').value = '';
+        }
+        
+        // Show notification
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.position = 'fixed';
+            notification.style.bottom = '20px';
+            notification.style.right = '20px';
+            notification.style.backgroundColor = var(--secondary-color);
+            notification.style.color = 'white';
+            notification.style.padding = '12px 24px';
+            notification.style.borderRadius = '8px';
+            notification.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
+            notification.style.zIndex = '9999';
+            notification.style.opacity = '0';
+            notification.style.transform = 'translateY(20px)';
+            notification.style.transition = 'all 0.3s ease';
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.opacity = '1';
+                notification.style.transform = 'translateY(0)';
+            }, 10);
+            
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                notification.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCart();
+        });
+    </script>
+</body>
+</html>

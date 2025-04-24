@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Refund Policy - Sardaarji's Kitchen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome (for list icons and Back button) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* --- Root Variables (from main theme) --- */
+    :root {
+        --primary-color: #FF7E1F; /* Orange */
+        --primary-dark: #E06000;
+        --secondary-color: #4CAF50; /* Green */
+        --accent-color: #FFC107; /* Yellow */
+        --dark-color: #333333;
+        --darker-bg: #222222; /* Footer background */
+        --light-color: #F8F9FA;
+        --text-color: #212529;
+        --background-light: #f9f7f4; /* Light beige background */
+        --white: #ffffff;
+        --grey-light: #eee;
+        --grey-medium: #999;
+        --grey-dark: #666;
+        --border-color-light: #dee2e6;
+        --border-radius: 15px;
+        --border-radius-sm: 8px;
+        --shadow-light: 0 6px 15px rgba(0,0,0,0.08);
+        --shadow-medium: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    /* --- Base Styles --- */
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: var(--background-light);
+        color: var(--text-color);
+        line-height: 1.7; /* Slightly increased line height */
+    }
+
+    h1, h2, h3, h4 {
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+        color: var(--dark-color);
+    }
+
+    a {
+        color: var(--primary-color);
+        text-decoration: none;
+    }
+    a:hover {
+        color: var(--primary-dark);
+    }
+
+    /* --- Page Header --- */
+    .page-header {
+        background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+        color: var(--white);
+        padding: 4rem 1rem;
+        text-align: center;
+        margin-bottom: 2rem;
+        border-bottom: 5px solid var(--primary-dark);
+    }
+
+    .page-header h1 {
+        font-weight: 700;
+        font-size: 3rem;
+        color: var(--white);
+        margin-bottom: 0.5rem;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+
+    .page-header p.lead {
+        font-weight: 300;
+        font-size: 1.2rem;
+        opacity: 0.9;
+    }
+
+    /* --- Content Block Styling --- */
+    .content-block {
+        background: var(--white);
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-medium);
+        padding: 2.5rem 2.5rem; /* Slightly more padding */
+        margin: 2rem auto;
+        max-width: 850px; /* Consistent width */
+        border-top: 5px solid var(--primary-color);
+    }
+
+    .content-block h2 {
+        font-size: 1.8rem;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid var(--grey-light);
+        color: var(--dark-color);
+    }
+     /* Space for first heading */
+    .content-block h2:first-of-type {
+        margin-top: 0;
+    }
+
+
+    .content-block p {
+        color: var(--grey-dark);
+        margin-bottom: 1.2rem;
+        font-size: 0.95rem;
+    }
+
+    .content-block ul {
+        color: var(--grey-dark);
+        margin-bottom: 1.2rem;
+        padding-left: 0; /* Remove default padding */
+        list-style: none; /* Remove default bullets */
+        font-size: 0.95rem;
+    }
+
+    .content-block ul li {
+        position: relative;
+        padding-left: 1.8rem; /* Space for icon */
+        margin-bottom: 0.8rem; /* Space between list items */
+    }
+
+    .content-block ul li::before {
+        /* Use a relevant Font Awesome icon */
+        content: '\f14a'; /* Check circle icon */
+        font-family: 'Font Awesome 6 Free';
+        font-weight: 900; /* Solid style */
+        color: var(--secondary-color); /* Green for positive points */
+        position: absolute;
+        left: 0;
+        top: 4px; /* Adjust vertical alignment */
+        font-size: 1rem;
+    }
+
+    /* --- Button Styling --- */
+    .btn-main {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+        color: var(--white);
+        padding: 0.8rem 2rem;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 8px rgba(255, 126, 31, 0.3);
+        border: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .btn-main:hover {
+        background-color: var(--primary-dark);
+        border-color: var(--primary-dark);
+        color: var(--white);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(255, 126, 31, 0.4);
+    }
+
+    /* --- Footer Styling --- */
+    footer {
+        background-color: var(--darker-bg);
+        color: rgba(255, 255, 255, 0.7);
+        text-align: center;
+        padding: 2rem 1rem;
+        margin-top: 4rem;
+        font-size: 0.9rem;
+    }
+
+     /* --- Responsive --- */
+     @media (max-width: 768px) {
+         .page-header h1 {
+             font-size: 2.5rem;
+         }
+         .content-block {
+             padding: 2rem 1.5rem;
+             margin: 1.5rem auto;
+         }
+         .content-block h2 {
+             font-size: 1.6rem;
+         }
+     }
+     @media (max-width: 576px) {
+         .page-header {
+             padding: 3rem 1rem;
+         }
+         .page-header h1 {
+             font-size: 2rem;
+         }
+          .page-header p.lead {
+             font-size: 1rem;
+         }
+         .content-block {
+             padding: 1.5rem 1rem;
+             margin: 1rem auto;
+         }
+         .content-block h2 {
+             font-size: 1.5rem;
+         }
+          .content-block p, .content-block ul {
+             font-size: 0.9rem;
+         }
+     }
+  </style>
+</head>
+<body>
+
+  <!-- Header Section -->
+  <div class="page-header">
+    <h1>Refund Policy</h1>
+    <p class="lead">Information regarding order cancellations and refunds at Sardaarji's Kitchen.</p>
+    <small>Effective Date: April 23, 2025</small>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="content-block">
+
+      <h2>1. Order Cancellations</h2>
+      <p>We understand that plans can change. You may cancel your order through our website or mobile app within <strong>5 minutes</strong> of placing it for a full refund. After this 5-minute window, your order preparation typically begins, and cancellations may no longer be possible.</p>
+      <p>To cancel, please go to your order history or contact our customer support immediately at +91 1234567890.</p>
+
+      <h2>2. Eligibility for Refunds</h2>
+      <p>Refunds are primarily issued in the following situations:</p>
+      <ul>
+        <li><strong>Order Cancellation:</strong> If you successfully cancel your order within the 5-minute timeframe mentioned above.</li>
+        <li><strong>Incorrect Items Received:</strong> If you receive items different from what you ordered.</li>
+        <li><strong>Damaged or Spoiled Items:</strong> If the food items arrive in a damaged or clearly spoiled condition, rendering them unfit for consumption.</li>
+        <li><strong>Missing Items:</strong> If items paid for are missing from your delivery.</li>
+        <li><strong>Failed Delivery:</strong> In rare cases where delivery could not be completed due to issues solely on our end or our delivery partner's end (excluding cases where the customer provided incorrect details or was unavailable).</li>
+      </ul>
+       <p>Please note that dissatisfaction with taste or personal preference does not typically qualify for a refund, although we value your feedback immensely.</p>
+
+
+      <h2>3. Reporting Issues & Requesting Refunds</h2>
+      <ul>
+        <li>For issues related to incorrect, damaged, spoiled, or missing items, please contact our customer support <strong>within 30 minutes</strong> of receiving your order.</li>
+        <li>We may require photographic evidence of the issue (e.g., pictures of damaged packaging or incorrect items) to process your request efficiently.</li>
+        <li>Please provide your Order ID and a clear description of the problem when contacting support.</li>
+      </ul>
+
+       <h2>4. Refund Process</h2>
+      <ul>
+        <li>Once your refund request is approved, the amount will typically be processed back to your <strong>original payment method</strong> (Credit Card, Debit Card, UPI, Wallet, etc.).</li>
+        <li>Refund processing times can vary depending on your bank or payment provider, but generally take <strong>3-7 business days</strong> to reflect in your account.</li>
+        <li>For Cash on Delivery (COD) orders, refunds may be processed via bank transfer or store credit, based on the discussion with customer support.</li>
+      </ul>
+
+      <h2>5. Contact Information</h2>
+      <p>For all cancellation and refund requests, or if you have any questions regarding this policy, please reach out to our customer support team:</p>
+       <ul>
+           <li><strong>Phone:</strong> +91 1234567890 (11:00 AM - 10:00 PM)</li>
+           <li><strong>Email:</strong> support@sardaarjikitchen.com (or info@sardaarjikitchen.com)</li>
+           <li><strong>Contact Form:</strong> Via our <a href="contact.html" title="Go to Contact Page">Contact Us page</a>.</li>
+       </ul>
+
+      <!-- Back Button -->
+      <div class="text-center mt-5"> <!-- Increased top margin -->
+        <a href="index.html" class="btn btn-main">
+          <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <footer>
+    <div>Sardaarji's Kitchen &copy; 2025. All Rights Reserved.</div>
+  </footer>
+
+  <!-- Bootstrap JS Bundle (includes Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- No custom JS needed for this static page -->
+
+</body>
+</html>

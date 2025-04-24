@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desserts Menu - Sardaarji's Kitchen</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #FF7E1F;
+            --secondary-color: #E91E63;
+            --accent-color: #FFC107;
+            --dark-color: #333333;
+            --light-color: #F8F9FA;
+            --text-color: #212529;
+            --border-radius: 12px;
+            --box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+            background-color: #f5f5f5;
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+        
+        /* Header Styles */
+        .site-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .site-header h1 {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .site-header p.lead {
+            font-weight: 300;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Category Header */
+        .category-header {
+            background: linear-gradient(135deg, var(--secondary-color), #C2185B);
+            color: white;
+            padding: 1.2rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .category-header h2 {
+            margin: 0;
+            font-weight: 600;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .category-header h2 i {
+            margin-right: 10px;
+        }
+        
+        .back-btn {
+            background-color: white;
+            color: var(--secondary-color);
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+        }
+        
+        .back-btn:hover {
+            background-color: var(--light-color);
+            transform: translateX(-5px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+        }
+        
+        /* Menu Filter */
+        .menu-filter {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 2rem;
+            justify-content: center;
+        }
+        
+        .filter-btn {
+            background-color: #f0f0f0;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: var(--transition);
+            color: var(--dark-color);
+        }
+        
+        .filter-btn.active {
+            background-color: var(--secondary-color);
+            color: white;
+            box-shadow: 0 4px 8px rgba(233, 30, 99, 0.3);
+        }
+        
+        .filter-btn:hover:not(.active) {
+            background-color: #e0e0e0;
+            transform: translateY(-3px);
+        }
+        
+        /* Menu Grid */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .menu-item {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+        }
+        
+        .menu-item-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .menu-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .menu-item-info {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .menu-item-title {
+            font-weight: 600;
+            margin: 0 0 0.5rem 0;
+            font-size: 1.2rem;
+            color: var(--dark-color);
+        }
+        
+        .menu-item-desc {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .menu-item-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .menu-item-price {
+            font-weight: 700;
+            color: var(--secondary-color);
+            font-size: 1.3rem;
+        }
+        
+        .menu-item-rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .menu-item-rating i {
+            color: var(--accent-color);
+        }
+        
+        .menu-item-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .btn-info {
+            background: none;
+            border: none;
+            color: #666;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .btn-info:hover {
+            color: var(--secondary-color);
+            transform: scale(1.1);
+        }
+        
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: none;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .quantity-btn:hover {
+            background-color: #e0e0e0;
+        }
+        
+        .btn-animated {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            position: relative;
+            overflow: hidden;
+            font-weight: 500;
+            display: inline-block;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .btn-animated:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 7px 10px rgba(0,0,0,0.2);
+        }
+        
+        .btn-animated:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+        }
+        
+        .btn-animated::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .btn-animated:hover::before {
+            transform: translateX(100%);
+        }
+        
+        .btn-add-cart {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            width: 100%;
+        }
+        
+        /* Cart Styles */
+        .cart-container {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 2rem;
+            position: sticky;
+            top: 2rem;
+        }
+        
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+        
+        .cart-title {
+            font-weight: 600;
+            font-size: 1.5rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .cart-title i {
+            color: var(--secondary-color);
+        }
+        
+        .cart-count {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .cart-items {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 1.5rem;
+            padding-right: 5px;
+        }
+        
+        .cart-items::-webkit-scrollbar {
+            width: 5px;
+        }
+        
+        .cart-items::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        
+        .cart-items::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 10px;
+        }
+        
+        .cart-items::-webkit-scrollbar-thumb:hover {
+            background: #aaa;
+        }
+        
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-item-info {
+            flex-grow: 1;
+        }
+        
+        .cart-item-title {
+            font-weight: 500;
+            margin: 0 0 0.25rem 0;
+        }
+        
+        .cart-item-price {
+            color: var(--secondary-color);
+            font-weight: 500;
+        }
+        
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .empty-cart-message {
+            text-align: center;
+            padding: 2rem 0;
+            color: #888;
+            font-style: italic;
+        }
+        
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .cart-total-price {
+            color: var(--secondary-color);
+        }
+        
+        /* Address Form */
+        .address-form {
+            margin-top: 2rem;
+        }
+        
+        .address-form h4 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .address-form h4 i {
+            color: var(--secondary-color);
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            transition: border-color 0.3s ease;
+            font-family: inherit;
+        }
+        
+        .form-control:focus {
+            border-color: var(--secondary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.1);
+        }
+        
+        /* Payment Methods */
+        .payment-methods {
+            margin-top: 1.5rem;
+        }
+        
+        .payment-methods h4 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .payment-methods h4 i {
+            color: var(--secondary-color);
+        }
+        
+        .payment-method {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            padding: 0.75rem;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+        
+        .payment-method:hover {
+            background-color: #f9f9f9;
+            border-color: #ddd;
+        }
+        
+        .payment-method input {
+            margin-right: 0.5rem;
+        }
+        
+        .btn-checkout {
+            background-color: var(--secondary-color);
+            width: 100%;
+            padding: 0.75rem;
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
+            border-radius: 8px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 0 2rem;
+            margin-top: 4rem;
+        }
+        
+        footer h5 {
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        footer h5::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+        
+        footer a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+        
+        footer a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+        
+        footer i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .social-icons a {
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        
+        .social-icons a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        
+        /* Nutritional Info Modal */
+        .nutrition-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .nutrition-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .nutrition-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+        
+        .nutrition-title {
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #888;
+            transition: var(--transition);
+        }
+        
+        .close-modal:hover {
+            color: var(--dark-color);
+        }
+        
+        .nutrition-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1rem;
+        }
+        
+        .nutrition-table th, .nutrition-table td {
+            padding: 0.5rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .nutrition-table th {
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+        
+        /* Floating Cart Button for Mobile */
+        .floating-cart-btn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 100;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .floating-cart-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        .floating-cart-btn i {
+            font-size: 1.5rem;
+        }
+        
+        .floating-cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: var(--primary-color);
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        /* Notification */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        /* Seasonal Promotion Banner */
+        .seasonal-banner {
+            background: linear-gradient(135deg, #FF9A8B, #FF6B95);
+            color: white;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .seasonal-banner h3 {
+            margin: 0;
+            font-weight: 600;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .seasonal-banner p {
+            margin: 0;
+            font-size: 1rem;
+        }
+        
+        .seasonal-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(30deg);
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .menu-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .cart-container {
+                position: static;
+                margin-top: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .site-header h1 {
+                font-size: 2rem;
+            }
+            
+            .category-header h2 {
+                font-size: 1.5rem;
+            }
+            
+            .menu-grid {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                gap: 1.5rem;
+            }
+            
+            .menu-item-img {
+                height: 180px;
+            }
+            
+            .floating-cart-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .cart-container {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1000;
+                margin: 0;
+                border-radius: 0;
+                padding: 1.5rem;
+                overflow-y: auto;
+            }
+            
+            .cart-container.active {
+                display: block;
+            }
+            
+            .close-cart {
+                display: block;
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+                background: none;
+                border: none;
+                font-size: 1.5rem;
+                color: #888;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .site-header {
+                padding: 1.5rem 0;
+            }
+            
+            .site-header h1 {
+                font-size: 1.75rem;
+            }
+            
+            .category-header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+                padding: 1rem;
+            }
+            
+            .menu-filter {
+                overflow-x: auto;
+                justify-content: flex-start;
+                padding-bottom: 0.5rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .filter-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+                white-space: nowrap;
+            }
+            
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .menu-item {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="site-header">
+        <div class="container">
+            <h1>Sardaarji's Kitchen</h1>
+            <p class="lead">Sweet Treats & Desserts</p>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="py-5">
+        <div class="container">
+            <div class="category-header">
+                <h2><i class="fas fa-ice-cream"></i> Desserts & Sweets</h2>
+                <button class="back-btn" onclick="location.href='index.html'">
+                    <i class="fas fa-arrow-left"></i> Back to Home
+                </button>
+            </div>
+            
+            <!-- Seasonal Promotion Banner -->
+            <div class="seasonal-banner">
+                <h3>Spring Special Offer!</h3>
+                <p>Enjoy 20% off on all dessert combos until April 30, 2025. Use code: SWEET25</p>
+            </div>
+            
+            <!-- Menu Filter -->
+            <div class="menu-filter">
+                <button class="filter-btn active" onclick="filterMenu('all')">All Items</button>
+                <button class="filter-btn" onclick="filterMenu('drinks')">Drinks</button>
+                <button class="filter-btn" onclick="filterMenu('halwa')">Halwa</button>
+                <button class="filter-btn" onclick="filterMenu('popular')">Popular</button>
+                <button class="filter-btn" onclick="filterMenu('seasonal')">Seasonal</button>
+            </div>
+            
+            <div class="menu-grid">
+                <!-- Menu Item 1 -->
+                <div class="menu-item" data-category="drinks popular">
+                    <div class="menu-item-img" style="background-image: url('https://www.crazymasalafood.com/wp-content/images/2022/03/lassi-1.jpg');">
+                        <span class="menu-badge">Popular</span>
+                    </div>
+                    <div class="menu-item-info">
+                        <div>
+                            <h4 class="menu-item-title">Sweet Lassi</h4>
+                            <p class="menu-item-desc">Creamy yogurt drink sweetened with sugar and flavored with cardamom.</p>
+                            <div class="menu-item-meta">
+                                <span class="menu-item-price">₹50</span>
+                                <div class="menu-item-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.8</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu-item-actions">
+                            <button class="btn-animated btn-add-cart" onclick="addToCart('Sweet Lassi', 50)">
+                                <i class="fas fa-plus"></i> Add to Cart
+                            </button>
+                            <button class="btn-info" onclick="showNutrition('sweet-lassi')">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Menu Item 2 -->
+                <div class="menu-item" data-category="drinks">
+                    <div class="menu-item-img" style="background-image: url('https://www.tajmahal.sk/wp-content/uploads/2020/12/SALTY-LASSI.jpg');"></div>
+                    <div class="menu-item-info">
+                        <div>
+                            <h4 class="menu-item-title">Masala Lassi</h4>
+                            <p class="menu-item-desc">Traditional Punjabi yogurt drink with a blend of spices and herbs.</p>
+                            <div class="menu-item-meta">
+                                <span class="menu-item-price">₹50</span>
+                                <div class="menu-item-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.6</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu-item-actions">
+                            <button class="btn-animated btn-add-cart" onclick="addToCart('Masala Lassi', 50)">
+                                <i class="fas fa-plus"></i> Add to Cart
+                            </button>
+                            <button class="btn-info" onclick="showNutrition('masala-lassi')">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Menu Item 3 -->
+                <div class="menu-item" data-category="popular seasonal">
+                    <div class="menu-item-img" style="background-image: url('https://recipes.timesofindia.com/photo/63799510.cms');">
+                        <span class="menu-badge">Popular</span>
+                    </div>
+                    <div class="menu-item-info">
+                        <div>
+                            <h4 class="menu-item-title">Gulab Jamun (4 pcs)</h4>
+                            <p class="menu-item-desc">Soft milk solids dumplings soaked in rose-flavored sugar syrup.</p>
+                            <div class="menu-item-meta">
+                                <span class="menu-item-price">₹70</span>
+                                <div class="menu-item-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.9</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu-item-actions">
+                            <button class="btn-animated btn-add-cart" onclick="addToCart('Gulab Jamun (4 pcs)', 70)">
+                                <i class="fas fa-plus"></i> Add to Cart
+                            </button>
+                            <button class="btn-info" onclick="showNutrition('gulab-jamun')">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Menu Item 4 -->
+                <div class="menu-item" data-category="halwa seasonal">
+                    <div class="menu-item-img" style="background-image: url('https://i.timesnowhindi.com/stories/gajar_halwa_cake.jpg');">
+                        <span class="menu-badge">Seasonal</span>
+                    </div>
+                    <div class="menu-item-info">
+                        <div>
+                            <h4 class="menu-item-title">Gajar Halwa</h4>
+                            <p class="menu-item-desc">Traditional carrot-based sweet dessert pudding with nuts and cardamom.</p>
+                            <div class="menu-item-meta">
+                                <span class="menu-item-price">₹120</span>
+                                <div class="menu-item-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.7</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu-item-actions">
+                            <button class="btn-animated btn-add-cart" onclick="addToCart('Gajar Halwa', 120)">
+                                <i class="fas fa-plus"></i> Add to Cart
+                            </button>
+                            <button class="btn-info" onclick="showNutrition('gajar-halwa')">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Menu Item 5 -->
+                <div class="menu-item" data-category="halwa">
+                    <div class="menu-item-img" style="background-image: url('https://i.ytimg.com/vi/LvvBmV6GAms/maxresdefault.jpg');"></div>
+                    <div class="menu-item-info">
+                        <div>
+                            <h4 class="menu-item-title">Sooji Halwa</h4>
+                            <p class="menu-item-desc">Semolina pudding cooked with ghee, sugar, and garnished with nuts.</p>
+                            <div class="menu-item-meta">
+                                <span class="menu-item-price">₹100</span>
+                                <div class="menu-item-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.5</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu-item-actions">
+                            <button class="btn-animated btn-add-cart" onclick="addToCart('Sooji Halwa', 100)">
+                                <i class="fas fa-plus"></i> Add to Cart
+                            </button>
+                            <button class="btn-info" onclick="showNutrition('sooji-halwa')">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Menu Item 6 -->
+                <div class="menu-item" data-category="halwa popular">
+                    <div class="menu-item-img" style="background-image: url('https://www.spicezone.com/wp-content/uploads/2015/02/DSC_3395.jpg');">
+                        <span class="menu-badge">Popular</span>
+                    </div>
+                    <div class="menu-item-info">
+                        <div>
+                            <h4 class="menu-item-title">Moong Dal Halwa</h4>
+                            <p class="menu-item-desc">Rich and indulgent dessert made from yellow moong lentils, ghee, and sugar.</p>
+                            <div class="menu-item-meta">
+                                <span class="menu-item-price">₹110</span>
+                                <div class="menu-item-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.8</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu-item-actions">
+                            <button class="btn-animated btn-add-cart" onclick="addToCart('Moong Dal Halwa', 110)">
+                                <i class="fas fa-plus"></i> Add to Cart
+                            </button>
+                            <button class="btn-info" onclick="showNutrition('moong-halwa')">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Additional Menu Items -->
+                <div class="menu-item" data-category="drinks seasonal">
+                    <div class="menu-item-img" style="background-image: url('https://smithakalluraya.com/wp-content/uploads/2020/05/mango-lassi.jpg');">
+                        <span class="menu-badge">Seasonal</span>
+                    </div>
+                    <div class="menu-item-info">
+                        <div>
+                            <h4 class="menu-item-title">Mango Lassi</h4>
+                            <p class="menu-item-desc">Refreshing yogurt drink blended with fresh mango pulp and a hint of cardamom.</p>
+                            <div class="menu-item-meta">
+                                <span class="menu-item-price">₹70</span>
+                                <div class="menu-item-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.9</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu-item-actions">
+                            <button class="btn-animated btn-add-cart" onclick="addToCart('Mango Lassi', 70)">
+                                <i class="fas fa-plus"></i> Add to Cart
+                            </button>
+                            <button class="btn-info" onclick="showNutrition('mango-lassi')">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-item" data-category="popular">
+                    <div class="menu-item-img" style="background-image: url('https://www.cookwithmanali.com/wp-content/uploads/2014/07/Rasmalai-Recipe.jpg');">
+                        <span class="menu-badge">Popular</span>
+                    </div>
+                    <div class="menu-item-info">
+                        <div>
+                            <h4 class="menu-item-title">Rasmalai</h4>
+                            <p class="menu-item-desc">Soft cottage cheese dumplings soaked in sweetened, thickened milk delicately flavored with cardamom.</p>
+                            <div class="menu-item-meta">
+                                <span class="menu-item-price">₹90</span>
+                                <div class="menu-item-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span>4.8</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu-item-actions">
+                            <button class="btn-animated btn-add-cart" onclick="addToCart('Rasmalai', 90)">
+                                <i class="fas fa-plus"></i> Add to Cart
+                            </button>
+                            <button class="btn-info" onclick="showNutrition('rasmalai')">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Floating Cart Button for Mobile -->
+            <button class="floating-cart-btn" onclick="toggleMobileCart()">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="floating-cart-count" id="floating-cart-count">0</span>
+            </button>
+            
+            <!-- Cart Section -->
+            <div class="cart-container mt-5" id="cart-container">
+                <button class="close-cart" onclick="toggleMobileCart()" id="close-cart">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="cart-header">
+                    <h3 class="cart-title"><i class="fas fa-shopping-cart"></i> Your Cart</h3>
+                    <span class="cart-count" id="cart-count">0 items</span>
+                </div>
+                
+                <div id="cart-items" class="cart-items">
+                    <!-- Cart items will be added here dynamically -->
+                    <div class="empty-cart-message">Your cart is empty</div>
+                </div>
+                
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span class="cart-total-price" id="total-price">₹0</span>
+                </div>
+                
+                <div class="address-form">
+                    <h4><i class="fas fa-map-marker-alt"></i> Delivery Information</h4>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Full Name" id="name">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Phone Number" id="phone">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" placeholder="Delivery Address" id="address" rows="3"></textarea>
+                    </div>
+                </div>
+                
+                <div class="payment-methods">
+                    <h4><i class="fas fa-money-bill-wave"></i> Payment Method</h4>
+                    <div class="payment-method">
+                        <input type="radio" id="cod" name="payment" value="cod" checked>
+                        <label for="cod">Cash on Delivery</label>
+                    </div>
+                </div>
+                
+                <button class="btn-animated btn-checkout" onclick="checkout()">
+                    <i class="fas fa-shopping-bag"></i> Checkout
+                </button>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Nutritional Info Modal -->
+    <div class="nutrition-modal" id="nutrition-modal">
+        <div class="nutrition-content">
+            <div class="nutrition-header">
+                <h3 class="nutrition-title" id="nutrition-title">Nutritional Information</h3>
+                <button class="close-modal" onclick="closeNutrition()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="nutrition-details">
+                <!-- Nutritional details will be loaded here -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Sardaarji's Kitchen</h5>
+                    <p>Authentic Punjabi cuisine delivered to your doorstep. We pride ourselves on using the freshest ingredients and traditional cooking methods.</p>
+                    <p><i class="fas fa-clock"></i> Open: 08:00 AM - 10:00 PM</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="Punjabi.html"><i class="fas fa-utensils"></i> Punjabi</a></li>
+                        <li><a href="dessert.html"><i class="fas fa-ice-cream"></i> Desserts</a></li>
+                        <li><a href="fast-food.html"><i class="fas fa-hamburger"></i> Fast Food</a></li>
+                        <li><a href="pizza.html"><i class="fas fa-pizza-slice"></i> Pizza</a></li>
+                        <li><a href="beverage.html"><i class="fas fa-mug-hot"></i> Beverages</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <p><i class="fas fa-phone"></i> +91 9935307380</p>
+                    <p><i class="fas fa-envelope"></i> sardarjikemashoorcholebhature@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 42, Lalbagh, Trilokinath Marg, Lucknow, Uttar Pradesh 226001</p>
+                    <div class="social-icons mt-3">
+                        <a href="#" class="me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center footer-bottom">
+                <p>&copy; 2025 Sardaarji's Kitchen. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Cart functionality
+        let cart = [];
+        let totalPrice = 0;
+        
+        // Load cart from localStorage if available
+        function loadCart() {
+            const savedCart = localStorage.getItem('sardaarjiCart');
+            if (savedCart) {
+                cart = JSON.parse(savedCart);
+                updateCart();
+            }
+        }
+        
+        // Save cart to localStorage
+        function saveCart() {
+            localStorage.setItem('sardaarjiCart', JSON.stringify(cart));
+        }
+        
+        function addToCart(item, price) {
+            const existingItem = cart.find(cartItem => cartItem.item === item);
+            
+            if (existingItem) {
+                existingItem.quantity++;
+                existingItem.totalPrice = existingItem.price * existingItem.quantity;
+            } else {
+                cart.push({ 
+                    item, 
+                    price, 
+                    quantity: 1,
+                    totalPrice: price
+                });
+            }
+            
+            // Show notification
+            showNotification(`${item} added to cart!`);
+            
+            updateCart();
+            saveCart();
+        }
+        
+        function updateCart() {
+            const cartItems = document.getElementById('cart-items');
+            const cartCount = document.getElementById('cart-count');
+            const floatingCartCount = document.getElementById('floating-cart-count');
+            
+            cartItems.innerHTML = '';
+            totalPrice = 0;
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<div class="empty-cart-message">Your cart is empty</div>';
+                cartCount.textContent = '0 items';
+                floatingCartCount.textContent = '0';
+            } else {
+                cartCount.textContent = `${cart.length} items`;
+                floatingCartCount.textContent = cart.length;
+                
+                cart.forEach((item, index) => {
+                    totalPrice += item.totalPrice;
+                    
+                    const cartItem = document.createElement('div');
+                    cartItem.className = 'cart-item';
+                    cartItem.innerHTML = `
+                        <div class="cart-item-info">
+                            <h5 class="cart-item-title">${item.item}</h5>
+                            <p class="cart-item-price">₹${item.price} × ${item.quantity}</p>
+                        </div>
+                        <div class="cart-item-quantity">
+                            <button class="quantity-btn" onclick="decreaseQuantity(${index})">-</button>
+                            <span>${item.quantity}</span>
+                            <button class="quantity-btn" onclick="increaseQuantity(${index})">+</button>
+                        </div>
+                    `;
+                    
+                    cartItems.appendChild(cartItem);
+                });
+            }
+            
+            document.getElementById('total-price').textContent = `₹${totalPrice}`;
+        }
+        
+        function increaseQuantity(index) {
+            cart[index].quantity++;
+            cart[index].totalPrice = cart[index].price * cart[index].quantity;
+            updateCart();
+            saveCart();
+        }
+        
+        function decreaseQuantity(index) {
+            if (cart[index].quantity > 1) {
+                cart[index].quantity--;
+                cart[index].totalPrice = cart[index].price * cart[index].quantity;
+            } else {
+                cart.splice(index, 1);
+            }
+            updateCart();
+            saveCart();
+        }
+        
+        function checkout() {
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const address = document.getElementById('address').value;
+            
+            if (!name || !phone || !address) {
+                alert('Please fill in all delivery information');
+                return;
+            }
+            
+            if (cart.length === 0) {
+                alert('Your cart is empty. Please add items to your cart.');
+                return;
+            }
+            
+            // Check for promo code
+            const promoDiscount = checkPromoCode();
+            const finalTotal = promoDiscount ? totalPrice * 0.8 : totalPrice;
+            
+            // In a real application, you would send this data to a server
+            alert(`Order placed successfully!\n\n${promoDiscount ? '20% Discount Applied!\n' : ''}Order Details:\n${cart.map(item => `${item.item} × ${item.quantity}`).join('\n')}\n\nTotal: ₹${finalTotal}\nPayment Method: Cash on Delivery\n\nDelivery Details:\n${name}\n${phone}\n${address}`);
+            
+            // Clear cart after successful order
+            cart = [];
+            totalPrice = 0;
+            updateCart();
+            saveCart();
+            document.getElementById('name').value = '';
+            document.getElementById('phone').value = '';
+            document.getElementById('address').value = '';
+        }
+        
+        // Check for valid promo code
+        function checkPromoCode() {
+            // In a real app, this would be connected to a form field
+            // For this demo, we'll assume the user has applied the code
+            const currentDate = new Date();
+            const promoEndDate = new Date(2025, 3, 30); // April 30, 2025
+            
+            // Check if current date is before promo end date
+            return currentDate <= promoEndDate;
+        }
+        
+        // Filter menu items
+        function filterMenu(category) {
+            const menuItems = document.querySelectorAll('.menu-item');
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            
+            // Update active filter button
+            filterButtons.forEach(button => {
+                if (button.textContent.toLowerCase().includes(category)) {
+                    button.classList.add('active');
+                } else {
+                    button.classList.remove('active');
+                }
+            });
+            
+            // Filter menu items
+            menuItems.forEach(item => {
+                if (category === 'all') {
+                    item.style.display = 'block';
+                } else {
+                    const categories = item.dataset.category.split(' ');
+                    if (categories.includes(category)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                }
+            });
+        }
+        
+        // Mobile cart toggle
+        function toggleMobileCart() {
+            const cartContainer = document.getElementById('cart-container');
+            cartContainer.classList.toggle('active');
+        }
+        
+        // Nutritional information
+        function showNutrition(itemId) {
+            const modal = document.getElementById('nutrition-modal');
+            const title = document.getElementById('nutrition-title');
+            const details = document.getElementById('nutrition-details');
+            
+            // Set title and content based on item
+            switch(itemId) {
+                case 'sweet-lassi':
+                    title.textContent = 'Sweet Lassi - Nutritional Information';
+                    details.innerHTML = `
+                        <p>A traditional Punjabi yogurt-based sweet drink.</p>
+                        <table class="nutrition-table">
+                            <tr>
+                                <th>Calories</th>
+                                <td>150 kcal</td>
+                            </tr>
+                            <tr>
+                                <th>Protein</th>
+                                <td>5g</td>
+                            </tr>
+                            <tr>
+                                <th>Carbohydrates</th>
+                                <td>24g</td>
+                            </tr>
+                            <tr>
+                                <th>Fat</th>
+                                <td>4g</td>
+                            </tr>
+                            <tr>
+                                <th>Calcium</th>
+                                <td>20% DV</td>
+                            </tr>
+                        </table>
+                        <p><strong>Allergens:</strong> Contains dairy</p>
+                        <p><strong>Benefits:</strong> Good source of probiotics and calcium. Aids digestion.</p>
+                    `;
+                    break;
+                case 'gulab-jamun':
+                    title.textContent = 'Gulab Jamun - Nutritional Information';
+                    details.innerHTML = `
+                        <p>Soft milk solids dumplings soaked in rose-flavored sugar syrup.</p>
+                        <table class="nutrition-table">
+                            <tr>
+                                <th>Calories</th>
+                                <td>175 kcal per piece</td>
+                            </tr>
+                            <tr>
+                                <th>Protein</th>
+                                <td>2g</td>
+                            </tr>
+                            <tr>
+                                <th>Carbohydrates</th>
+                                <td>30g</td>
+                            </tr>
+                            <tr>
+                                <th>Fat</th>
+                                <td>5g</td>
+                            </tr>
+                            <tr>
+                                <th>Sugar</th>
+                                <td>25g</td>
+                            </tr>
+                        </table>
+                        <p><strong>Allergens:</strong> Contains dairy, may contain nuts</p>
+                        <p><strong>Serving suggestion:</strong> Best enjoyed warm with a scoop of vanilla ice cream.</p>
+                    `;
+                    break;
+                // Add cases for other menu items
+                default:
+                    title.textContent = 'Nutritional Information';
+                    details.innerHTML = `<p>Nutritional information for this item is not available at the moment.</p>`;
+            }
+            
+            // Show modal
+            modal.style.display = 'flex';
+        }
+        
+        function closeNutrition() {
+            const modal = document.getElementById('nutrition-modal');
+            modal.style.display = 'none';
+        }
+        
+        // Notification system
+        function showNotification(message) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.textContent = message;
+            
+            // Add to document
+            document.body.appendChild(notification);
+            
+            // Trigger animation
+            setTimeout(() => {
+                notification.style.opacity = '1';
+                notification.style.transform = 'translateY(0)';
+            }, 10);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                notification.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('nutrition-modal');
+            if (event.target === modal) {
+                closeNutrition();
+            }
+        };
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCart();
+            
+            // Hide close cart button on desktop
+            if (window.innerWidth > 768) {
+                document.getElementById('close-cart').style.display = 'none';
+            }
+        });
+        
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                document.getElementById('close-cart').style.display = 'none';
+                document.getElementById('cart-container').classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
